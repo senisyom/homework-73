@@ -16,11 +16,11 @@ app.get('/:userMessage', (req, res) => {
 
 app.get(`/encode/:password`, (req, res) => {
     const encodedPassword = Vigenere.Cipher(password).crypt(req.params.password);
-    return res.send(` <h1>Encode: ${encodedPassword}</h1>`)
+    return res.send(`<h1>Encode: ${encodedPassword}</h1>`)
 })
 app.get(`/decode/:password`, (req, res) => {
     const decodedPassword = Vigenere.Decipher(password).crypt(req.params.password);
-    return res.send(` <h1>Decode: ${decodedPassword}</h1>`)
+    return res.send(`<h1>Decode: ${decodedPassword}</h1>`)
 })
 
 app.listen(port, () => {
