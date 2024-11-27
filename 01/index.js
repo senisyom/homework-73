@@ -1,11 +1,11 @@
 const express = require('express');
-const Caesar = require('caesar-salad').Caesar;
+const Vigenere = require('caesar-salad').Vigenere;
 
 const app = express()
 
 const port = 8000
 
-
+const password = 'password';
 
 app.get('/', (req, res) => {
     return res.send(' <h1> Home page </h1>')
@@ -15,12 +15,12 @@ app.get('/:userMessage', (req, res) => {
 })
 
 app.get(`/encode/:password`, (req, res) => {
-    const endcodeCeasar = Caesar.Cipher('b').crypt(req.params.password);
-    return res.send(` <h1>Encode: ${endcodeCeasar}</h1>`)
+    const encodedPassword = Vigenere.Cipher(password).crypt(req.params.password);
+    return res.send(` <h1>Encode: ${encodedPassword}</h1>`)
 })
 app.get(`/decode/:password`, (req, res) => {
-    const decodeCeasar = Caesar.Decipher('b').crypt(req.params.password)
-    return res.send(` <h1>Decode: ${decodeCeasar}</h1>`)
+    const decodedPassword = Vigenere.Decipher(password).crypt(req.params.password);
+    return res.send(` <h1>Decode: ${decodedPassword}</h1>`)
 })
 
 app.listen(port, () => {
