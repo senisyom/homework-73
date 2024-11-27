@@ -15,8 +15,12 @@ app.get('/:userMessage', (req, res) => {
 })
 
 app.get(`/encode/:password`, (req, res) => {
-    const ceasar = Caesar.Cipher('b').crypt(req.params.password);
-    return res.send(` <h1>Encodeded: ${ceasar}</h1>`)
+    const endcodeCeasar = Caesar.Cipher('b').crypt(req.params.password);
+    return res.send(` <h1>Encode: ${endcodeCeasar}</h1>`)
+})
+app.get(`/decode/:password`, (req, res) => {
+    const decodeCeasar = Caesar.Decipher('b').crypt(req.params.password)
+    return res.send(` <h1>Decode: ${decodeCeasar}</h1>`)
 })
 
 app.listen(port, () => {
